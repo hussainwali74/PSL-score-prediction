@@ -38,7 +38,7 @@ console.log('=========================================================')
 console.log('response',response);
 console.log('=========================================================')
     // const resp = JSON.parse(response.data.choices[0].message?.content as string)
-    await connect("mongodb://localhost:27017/newdb")
+    await connect(process.env.MONGO_DB_HOST+"/newdb")
     let q: ImageInterface = {
       prompt,
       image_url: response.data.data[0].url || "no response from gpt",
@@ -56,7 +56,7 @@ console.log('=========================================================')
 
 export async function GET(req: Request) {
   try {
-    await connect("mongodb://localhost:27017/newdb");
+    await connect(process.env.MONGO_DB_HOST+"/newdb");
     const all = await QuestionModel.find({});
     return NextResponse.json({ data: all, status: 200 });
   } catch (error) {
@@ -68,7 +68,7 @@ export async function GET(req: Request) {
 }
 export async function DELETE(req: NextRequest) {
   try {
-    await connect("mongodb://localhost:27017/newdb");
+    await connect(process.env.MONGO_DB_HOST+"/newdb");
     const resp = await QuestionModel.findByIdAndDelete(
       req.nextUrl.searchParams.get("id")
     );

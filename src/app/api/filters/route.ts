@@ -20,7 +20,7 @@ export async function POST(req: Request) {
       return new NextResponse("messages required", { status: 400 });
     }
  
-    await connect("mongodb://localhost:27017/newdb");
+    await connect(process.env.MONGO_DB_HOST+"/newdb");
     let q: FilterInterface = {
       grade:payload.grade,
       topic:payload.topic,
@@ -40,7 +40,7 @@ export async function POST(req: Request) {
 
 export async function GET(req: Request) {
   try {
-    await connect("mongodb://localhost:27017/newdb");
+    await connect(process.env.MONGO_DB_HOST+"/newdb");
     const all:FilterInterface[] = await FilterModel.find({});
 
     return NextResponse.json({ data: all, status: 200 });
@@ -54,7 +54,7 @@ export async function GET(req: Request) {
 
 export async function DELETE(req: NextRequest) {
   try {
-    await connect("mongodb://localhost:27017/newdb");
+    await connect(process.env.MONGO_DB_HOST+"/newdb");
     const resp = await FilterModel.findByIdAndDelete(
       req.nextUrl.searchParams.get("id")
     );

@@ -46,7 +46,7 @@ export async function PUT(request: NextRequest) {
       ""
     )}-${uniqueSuffix}.${mime.getExtension(file.type)}`;
     await writeFile(`${uploadDir}/${filename}`, buffer);
-    await connect("mongodb://localhost:27017/newdb");
+    await connect(process.env.MONGO_DB_HOST+"/newdb");
 
     const newQ = await QuestionModel.findByIdAndUpdate(formData.get('id'),{
         image_url: `${relativeUploadDir}/${filename}`

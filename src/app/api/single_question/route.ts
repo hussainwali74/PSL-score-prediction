@@ -44,7 +44,7 @@ export async function POST(req: Request) {
         correct_answer: string;
       }[] = Object.values(resp);
 
-      await connect("mongodb://localhost:27017/newdb");
+      await connect(process.env.MONGO_DB_HOST+"/newdb");
       for (let i = 0; i < qs.length; i++) {
         const single_q: SingleQuestionInterface = {
           question: qs[i].question,
@@ -75,7 +75,7 @@ export async function POST(req: Request) {
 
 export async function GET(req: Request) {
   try {
-    await connect("mongodb://localhost:27017/newdb");
+    await connect(process.env.MONGO_DB_HOST+"/newdb");
     const all: SingleQuestionInterface[] = await SingleQuestionModel.find({});
     // console.log('=========================================================')
     // console.log('all',all);
@@ -99,7 +99,7 @@ export async function GET(req: Request) {
 }
 export async function DELETE(req: NextRequest) {
   try {
-    await connect("mongodb://localhost:27017/newdb");
+    await connect(process.env.MONGO_DB_HOST+"/newdb");
     const resp = await QuestionModel.findByIdAndDelete(
       req.nextUrl.searchParams.get("id")
     );
