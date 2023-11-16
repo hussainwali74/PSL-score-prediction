@@ -17,191 +17,192 @@ POST, GET, DELETE, UPDATE operations
     export interface QuestionInterface {
 
       _id?: string;
-  
+
       prompt: string;
-  
+
       response: string;
-  
+
       topic: string;
-  
+
       sub_topic: string;
-  
+
       grade: string;
-  
+
       image_url?: string;
-  
+
       img_gen_prompt_question?: string;
-  
+
       img_gen_prompt_solution?: string;
-  
+
       date?: Date;
 
-}
+    }
 
 
-export interface SingleQuestionInterface {
+    export interface SingleQuestionInterface {
 
-  _id?: string;
-  
+      _id?: string;
+
       prompt: string;
-  
-      question:string;
-  
-      correct_answer:string;
-  
-      solution:string;
-  
+
+      question: string;
+
+      correct_answer: string;
+
+      solution: string;
+
       topic: string;
-  
+
       sub_topic: string;
-  
+
       grade: string;
-  
+
       image_url?: string;
-  
+
       img_gen_prompt_question?: string;
-  
-     img_gen_prompt_solution?: string;
-  
+
+      img_gen_prompt_solution?: string;
+
       date?: Date;
 
-}
+    }
 
 
-export const questionSchema = new Schema<QuestionInterface>({
+    export const questionSchema = new Schema<QuestionInterface>({
 
-  prompt: {
-  
+      prompt: {
+
         type: String,
 
-  },
+      },
 
-  
+
       response: {
-  
-            type: String,
-  
+
+        type: String,
+
       },
 
-  
+
       grade: {
-  
-        type: String,
-  
-  },
-  
-  
-  topic: {
-  
-        type: String,
-  
-  },
-  
-  
-  sub_topic: {
-  
-        type: String,
-  
-  },
-  
-  image_url: {
-  
-        type: String,
-  
-  },
-  
-  img_gen_prompt_question: {
-  
-        type: String,
-  
-  },
-  img_gen_prompt_solution: {
-  
-        type: String,
-  
-  },
-  
-  date: {
-  
-        type: Date,
-    
-        default: Date.now,
-  
-  },
 
-});
+        type: String,
 
-export const singleQuestionSchema = new Schema<SingleQuestionInterface>({
-
-  prompt: {
-  
-        type: String,
-  
-  },
-  
-  question: {
-  
-        type: String,
-  
-  },
-  
-  solution: {
-  
-        type: String,
-  
       },
-  
-    correct_answer: {
-
-          type: String,
-  
-    },
-  
-    grade: {
-
-      type: String,
-
-  },
-  
-    topic: {
-    
-          type: String,
-    
-    },
-    
-    sub_topic: {
-    
-          type: String,
-    
-    },
-  
-    img_gen_prompt_question: {
-    
-          type: String,
-    
-    },
-    
-    img_gen_prompt_solution: {
-    
-          type: String,
-    
-    },
-    
-    image_url: {
-    
-          type: String,
-    
-    },
-    
-    date: {
-    
-          type: Date,
-      
-          default: Date.now,
-    
-    },
-  
-});
 
 
-# rest of the models are in  src/app/model folder
+      topic: {
+
+        type: String,
+
+      },
+
+
+      sub_topic: {
+
+        type: String,
+
+      },
+
+      image_url: {
+
+        type: String,
+
+      },
+
+      img_gen_prompt_question: {
+
+        type: String,
+
+      },
+
+      img_gen_prompt_solution: {
+
+        type: String,
+
+      },
+
+      date: {
+
+        type: Date,
+
+        default: Date.now,
+
+      },
+
+    });
+
+    export const singleQuestionSchema = new Schema<SingleQuestionInterface>({
+
+      prompt: {
+
+        type: String,
+
+      },
+
+      question: {
+
+        type: String,
+
+      },
+
+      solution: {
+
+        type: String,
+
+      },
+
+      correct_answer: {
+
+        type: String,
+
+      },
+
+      grade: {
+
+        type: String,
+
+      },
+
+      topic: {
+
+        type: String,
+
+      },
+
+      sub_topic: {
+
+        type: String,
+
+      },
+
+      img_gen_prompt_question: {
+
+        type: String,
+
+      },
+
+      img_gen_prompt_solution: {
+
+        type: String,
+
+      },
+
+      image_url: {
+
+        type: String,
+
+      },
+
+      date: {
+
+        type: Date,
+
+        default: Date.now,
+
+      },
+
+    });
+
+
+# rest of the models are in src / app / model folder
