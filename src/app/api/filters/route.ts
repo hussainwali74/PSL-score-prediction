@@ -40,6 +40,11 @@ export async function POST(req: Request) {
 
 export async function GET(req: Request) {
   try {
+
+      console.log('-----------------------------------------------------')
+      console.log(`process.env.MONGO_DB_HOST :>>`, process.env.MONGO_DB_HOST)
+      console.log('-----------------------------------------------------')
+
     await connect(process.env.MONGO_DB_HOST+"/newdb");
     const all:FilterInterface[] = await FilterModel.find({});
 

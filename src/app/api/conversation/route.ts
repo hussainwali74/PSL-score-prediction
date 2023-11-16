@@ -20,9 +20,19 @@ const openai = new OpenAIApi(configuration);
 export async function POST(req: Request) {
   try {
     const body = await req.json();
+
+      console.log('-----------------------------------------------------')
+      console.log(`body :>>`, body)
+      console.log('-----------------------------------------------------')
+
     const { messages } = body;
     const messages_for_api = messages["messages"];
     const prompt = messages_for_api["messages"][0]["content"];
+
+      console.log('-----------------------------------------------------')
+      console.log(`configuration.apiKey :>>`, configuration.apiKey)
+      console.log('-----------------------------------------------------')
+
     if (!configuration.apiKey) {
       return new NextResponse("Unauthorized", { status: 401 });
     }

@@ -26,7 +26,7 @@ export default function RootLayout({
               className="items-center p-3 border border-gray-400 rounded-md hover:bg-gray-600"
               href="/"
             >
-              Home
+                          Create Question
             </Link>
           
             <Link
